@@ -3,7 +3,7 @@ namespace Laravelsms\Sms;
 
 class UnitTest extends \TestCase
 {
-    private $mobile = '13685169207';
+    private $mobile = '测试手机号码';
 
     public function setUp()
     {
