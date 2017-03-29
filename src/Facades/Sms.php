@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpsms\Sms\Facades;
+namespace Laravelsms\Sms\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
