@@ -49,7 +49,6 @@ composer.json
 
 //创建配置文件
 php artisan vendor:publish --tag=phpsms
-
 ```
 
 
