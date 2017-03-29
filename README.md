@@ -22,14 +22,14 @@
 Via Composer
 
 ``` php
-$ composer require phpsms/sms: "dev-master"
+$ composer require laravelsms/sms: "dev-master"
 ```
 
 composer.json
 
 
 ``` php
-"phpsms/sms": "dev-master"
+"laravelsms/sms": "dev-master"
 ```
 
 ## 配置
@@ -38,13 +38,13 @@ composer.json
 //服务提供者
 'providers' => [
         // ...
-        Phpsms\Sms\SmsServiceProvider::class,
+        Laravelsms\Sms\SmsServiceProvider::class,
     ]
     
 //别名
 'aliases' => [
     //...
-    'Sms' => Phpsms\Sms\Facades\Sms::class,    
+    'Sms' => Laravelsms\Sms\Facades\Sms::class,    
 ]
 
 //创建配置文件
@@ -281,17 +281,17 @@ $ vendor/bin/phpunit tests/PhpSmsUnitTest.php
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/phpsms/sms.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/laravelsms/sms.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/phpsms/sms/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/phpsms/sms.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/phpsms/sms.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/phpsms/sms.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/laravelsms/sms/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/laravelsms/sms.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/laravelsms/sms.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/laravelsms/sms.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/phpsms/sms
-[link-travis]: https://travis-ci.org/phpsms/sms
-[link-scrutinizer]: https://scrutinizer-ci.com/g/phpsms/sms/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/phpsms/sms
-[link-downloads]: https://packagist.org/packages/phpsms/sms
+[link-packagist]: https://packagist.org/packages/laravelsms/sms
+[link-travis]: https://travis-ci.org/laravelsms/sms
+[link-scrutinizer]: https://scrutinizer-ci.com/g/laravelsms/sms/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/laravelsms/sms
+[link-downloads]: https://packagist.org/packages/laravelsms/sms
 [link-author]: https://github.com/phper2013
 [link-contributors]: ../../contributors
