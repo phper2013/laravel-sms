@@ -1,5 +1,5 @@
 {
-    "name": "Laravelsms/sms",
+    "name": "laravelsms/sms",
     "type": "package",
     "description": "Laravel 5 PhpSms Package",
     "keywords": ["laravel-sms", "laravel sms", "sms", "phpsms"],
@@ -31,7 +31,7 @@
             "tests"
         ],
         "psr-4": {
-            "Laravelsms\\Test\\": "tests/"
+            "Laravelsms\\Sms\\": "tests/"
         }
     },
     "scripts": {
