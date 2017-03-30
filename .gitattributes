@@ -1,0 +1,5 @@
+.editorconfig export-ignore
+.gitattributes export-ignore
+.scrutinizer.yml export-ignore
+.styleci.yml export-ignore
+phpunit.xml export-ignore

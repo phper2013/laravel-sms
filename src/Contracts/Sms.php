@@ -165,7 +165,7 @@ abstract class Sms
     /**
      * @param string $mobile
      * @param bool $send
-     * @return array
+     * @return mixed
      */
     abstract protected function singlesSend($mobile, $send = true);
 

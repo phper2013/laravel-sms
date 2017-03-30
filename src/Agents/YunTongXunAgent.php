@@ -71,7 +71,7 @@ class YunTongXunAgent extends Sms
      * @return array $result
      * @return int $result[].code 返回0则成功，返回其它则错误
      * @return string $result[].msg 返回消息
-     * @return string $result[].verifyCode 验证码
+     * @return mixed $result[].verifyCode 验证码
      */
     protected function curl($url, $postData)
     {
