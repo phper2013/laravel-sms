@@ -138,13 +138,13 @@ $result = $smsDriver->singlesSend($mobile);    //发送短信,返回结果
 
 > 使用内容方式发送,无需设置模板id和模板var(如:云片网络、luosimao)
 ``` php
-$smsDriver->setContentByVerifyCode('luoSiMao');
+$smsDriver->setContentByVerifyCode();
 //假设模板内容为：“{verifyCode}是您请求的验证码”，程序转化为：761888是您请求的验证码
 $result = $smsDriver->singlesSend($mobile);
 
 Or
 
-$smsDriver->setContentByVerifyCode('luoSiMao', 20);
+$smsDriver->setContentByVerifyCode(20);
 //假设模板内容为：“您的验证码是{verifyCode}，有效期为{time}分钟”，程序转化为：您的验证码是761888，有效期为20分钟
 $result = $smsDriver->singlesSend($mobile);
 
