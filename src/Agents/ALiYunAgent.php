@@ -12,8 +12,9 @@ class ALiYunAgent extends Sms
     private $appKey;
     private $appSecret;
 
-    private $host = 'https://sms.aliyuncs.com/?';
-    private $singleSendUrl = 'SingleSendSms';
+    private $host = 'http://dysmsapi.aliyuncs.com/?';
+    private $region = "cn-hangzhou";
+    private $singleSendUrl = 'SendSms';
     private $method = "GET";
 
     public function __construct($config)
@@ -58,8 +59,8 @@ class ALiYunAgent extends Sms
         $url = $this->host;
 
         $requestParams = array(
-            'ParamString' => json_encode($this->templateVar),
-            'RecNum' => $mobile,
+            'TemplateParam' => json_encode($this->templateVar),
+            'PhoneNumbers' => $mobile,
             'SignName' => $this->signName,
             'TemplateCode' => $this->templateId
         );
@@ -82,18 +83,21 @@ class ALiYunAgent extends Sms
     protected function curl($url, $requestParams)
     {
         // 注意使用GMT时间
+        $timezone = date_default_timezone_get();
         date_default_timezone_set("GMT");
-        $dateTimeFormat = 'Y-m-d\TH:i:s\Z';
+        $timestamp = $timestamp = date('Y-m-d\TH:i:s\Z');
+        date_default_timezone_set($timezone);
 
         // 其他请求参数公共参数
         $publicParams = array(
+            'RegionId' => $this->region,
             'Format' => 'JSON',
-            'Version' => '2016-09-27',
+            'Version' => '2017-05-25',
             'SignatureVersion' => '1.0',
             'SignatureMethod' => 'HMAC-SHA1',
             'SignatureNonce' => uniqid(),
             'AccessKeyId' => $this->appKey,
-            'Timestamp' => date($dateTimeFormat),
+            'Timestamp' => $timestamp,
             'Action' => $this->singleSendUrl
         );
 
@@ -120,7 +124,7 @@ class ALiYunAgent extends Sms
     {
         if (empty($httpResponse['error'])) {
             $response = json_decode($httpResponse['jsonData'], true);
-            if ($response['Model']) {
+            if ($response['Code'] == 'OK') {
                 $result = ['code' => 0, 'msg' => '发送成功', 'verifyCode' => $this->verifyCode];
             } else {
                 $result = ['code' => time(), 'msg' => $response['Code']];
