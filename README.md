@@ -22,7 +22,7 @@
 Via Composer
 
 ``` php
-$ composer require laravelsms/sms: "dev-master"
+composer require laravelsms/sms
 ```
 
 composer.json
