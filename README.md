@@ -22,6 +22,10 @@
 Via Composer
 
 ``` php
+composer require laravelsms/sms:dev-master
+
+or
+
 composer require laravelsms/sms
 ```
 
