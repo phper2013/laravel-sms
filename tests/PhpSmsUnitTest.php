@@ -260,7 +260,7 @@ class PhpSmsUnitTest extends \TestCase
      * 如果使用系统内验证码，请使用verifyCode标签
      * 默认国家码为86，其它国家和地区的编码必须填写
      * 国内短信格式：$mobile = '13******' 或 $mobile = ['86', '13*********']
-     * 国外短信格式：$mobile = ['82', '016********']
+     * 其它国家和地区短信格式：$mobile = ['82', '016********']
      */
     public function testGetQQYunData()
     {
@@ -399,7 +399,7 @@ class PhpSmsUnitTest extends \TestCase
      * 如果使用系统内验证码，请使用verifyCode标签
      * 默认国家码为86，其它国家和地区的编码必须填写
      * 国内短信格式：$mobile = '13******' 或 $mobile = ['86', '13*********']
-     * 国外短信格式：$mobile = ['82', '016********']
+     * 其它国家和地区短信格式：$mobile = ['82', '016********']
      */
 //    public function testQQYunAgent()
 //    {
