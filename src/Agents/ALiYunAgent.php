@@ -85,7 +85,7 @@ class ALiYunAgent extends Sms
         // 注意使用GMT时间
         $timezone = date_default_timezone_get();
         date_default_timezone_set("GMT");
-        $timestamp = $timestamp = date('Y-m-d\TH:i:s\Z');
+        $timestamp = date('Y-m-d\TH:i:s\Z');
         date_default_timezone_set($timezone);
 
         // 其他请求参数公共参数

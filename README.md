@@ -11,7 +11,7 @@
 基于laravel5开发的轻量化手机短信服务包，特点：简单，灵活
 
 
-   > 支持：阿里云短信、云片网络、容联·云通讯、赛邮·云通讯、Luosimao
+   > 支持：阿里云短信、云片网络、容联·云通讯、赛邮·云通讯、Luosimao、腾讯云短信
 
    > 适合场景：手机验证、订单消息、通知提醒等
 
@@ -91,6 +91,10 @@ ALIYUN_APPKEY=your-appkey
 ALIYUN_APPSECRET=your-appsecret
 ALIYUN_TEMPLATEID=模板ID         //参考：SMS_57930028
 
+QQYUN_APPID=your-sdkappid
+QQYUN_APPKEY=your-appkey
+QQYUN_TEMPLATEID=模板ID         //参考：76068
+
 ```
 ## 使用示例
 
@@ -112,13 +116,16 @@ $smsDriver = Sms::driver('yunTongXun');
 $smsDriver = Sms::driver('subMail');
 
 $smsDriver = Sms::driver('luoSiMao');
+
+$smsDriver = Sms::driver('qqYun');
+
 ```
 ### 2、程序自带标签变量说明
 
 ``` php
 {verifyCode} 模板数据验证码变量
 {time} 模板数据有效时间变量
-['yzm' => 'verifyCode'] 此中verifyCode表示使用程序自动生成的验证码
+['yzm' => 'verifyCode'] 说明：'yzm'表示官方模板变量名，'verifyCode' 表示使用程序自带的生成验证码功能
 ```
 
 ### 3、用户定义模板说明(重要)
@@ -129,15 +136,30 @@ $smsDriver = Sms::driver('luoSiMao');
 ### 4、基本发送方式
 
 ``` php
-$mobile = '***********';  //手机号
+$mobile = '13*********';  //手机号
 ```
 
-> 使用模板方式发送,无需设置content(如:容联·云通讯、赛邮·云通讯、阿里云短信)
+> 使用模板方式发送,无需设置content(如:容联·云通讯、赛邮·云通讯、阿里云短信、腾讯云短信)
 
 ``` php
 $templateVar = ['yzm' => 'verifyCode'];          //verifyCode表示使用程序自动生成的验证码
 $smsDriver->setTemplateVar($templateVar, true);  //替换模板变量，true表示返回键值对数组，false表示返回值数组
 $result = $smsDriver->singlesSend($mobile);    //发送短信,返回结果
+
+```
+
+>  腾讯云短信，默认国家码为86，其它国家和地区的编码必须填写, 
+>  国内短信格式：$mobile = '13******' 或 $mobile = ['86', '13*********'], 
+>  其它国家和地区短信格式：$mobile = ['82', '016********']
+
+``` php
+$result = $smsDriver->singlesSend($mobile);
+
+or
+
+$mobile = ['82', '016********'];
+$result = $smsDriver->singlesSend($mobile);
+
 ```
 
 > 使用内容方式发送,无需设置模板id和模板var(如:云片网络、luosimao)
@@ -207,9 +229,9 @@ $smsDriver->setTemplateVar($templateVar);
 //参考
  array(2) {
    [0]=>
-   string(8) "'931101'"
+   string(8) "931101"
    [1]=>
-   string(4) "'10'"
+   string(4) "10"
  }
 ```
 
@@ -245,9 +267,10 @@ $smsDriver->singlesSend($mobile, false);
    
    >return int $result[].code 返回0则成功，返回其它则错误
    
-   >return string $result[].msg 返回消息 = "发送成功" Or 短信代理平台提示消息
+   >return string $result[].msg 返回消息： "发送成功" Or 短信代理平台提示消息
    
-   >return int $result[].verifyCode 验证码 = 程序生成验证码，不使用时返回NULL
+   >return int $result[].verifyCode 返回程序自动生成的验证码，如果不使用程序自带的验证码生成功能，此变量值为NULL，
+   需自行传递验证码值
    
   
  ``` php

@@ -1,7 +1,7 @@
 <?php
 namespace Laravelsms\Sms;
 
-class UnitTest extends \TestCase
+class PhpSmsUnitTest extends \TestCase
 {
     private $mobile = '测试手机号码';
 
@@ -153,7 +153,7 @@ class UnitTest extends \TestCase
         var_dump($smsDriver->getContent());
     }
 
-    /*******************************  以下请根据实际需要打开没试  ******************************************/
+    /*******************************  以下请根据实际需要打开测试  ******************************************/
 
     /*******************************  返回拼接后的待发送数据 分割线  ***************************************/
 
@@ -248,6 +248,29 @@ class UnitTest extends \TestCase
         $manager = $this->manager();
         $smsDriver = $manager->driver('yunTongXun');
         $smsDriver->setTemplateId(1);
+        $smsDriver->setTemplateVar($templateVar);
+        $result = $smsDriver->singlesSend($this->mobile, false);
+
+        var_dump($result);
+    }
+
+    /**
+     * 【腾讯云短信 cloud.tencent.com】
+     * 官方模板格式：验证码{1}，请于{2}分钟内填写。如非本人操作，请忽略。
+     * 如果使用系统内验证码，请使用verifyCode标签
+     * 默认国家码为86，其它国家和地区的编码必须填写
+     * 国内短信格式：$mobile = '13******' 或 $mobile = ['86', '13*********']
+     * 国外短信格式：$mobile = ['82', '016********']
+     */
+    public function testGetQQYunData()
+    {
+        var_dump('【QQYun】');
+
+        $templateVar = ['1' => 'verifyCode', '2' => 15];
+
+        $manager = $this->manager();
+        $smsDriver = $manager->driver('qqYun');
+        $smsDriver->setSignName('雷神的号');
         $smsDriver->setTemplateVar($templateVar);
         $result = $smsDriver->singlesSend($this->mobile, false);
 
@@ -364,6 +387,29 @@ class UnitTest extends \TestCase
 //        $manager = $this->manager();
 //        $smsDriver = $manager->driver('yunTongXun');
 //        $smsDriver->setTemplateId(1);
+//        $smsDriver->setTemplateVar($templateVar);
+//        $result = $smsDriver->singlesSend($this->mobile);
+//
+//        var_dump($result);
+//    }
+
+    /**
+     * 【腾讯云短信 cloud.tencent.com】
+     * 官方模板格式：验证码{1}，请于{2}分钟内填写。如非本人操作，请忽略。
+     * 如果使用系统内验证码，请使用verifyCode标签
+     * 默认国家码为86，其它国家和地区的编码必须填写
+     * 国内短信格式：$mobile = '13******' 或 $mobile = ['86', '13*********']
+     * 国外短信格式：$mobile = ['82', '016********']
+     */
+//    public function testQQYunAgent()
+//    {
+//        var_dump('【QQYun】');
+//
+//        $templateVar = ['1' => 'verifyCode', '2' => 15];
+//
+//        $manager = $this->manager();
+//        $smsDriver = $manager->driver('qqYun');
+//        $smsDriver->setSignName('雷神的号');
 //        $smsDriver->setTemplateVar($templateVar);
 //        $result = $smsDriver->singlesSend($this->mobile);
 //

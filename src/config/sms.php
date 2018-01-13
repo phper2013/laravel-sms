@@ -7,7 +7,7 @@ return [
     | 第三方短信服务商
     |--------------------------------------------------------------------------
     |
-    | 支持：阿里云短信、云片网络、容联·云通讯、赛邮·云通讯、Luosimao
+    | 支持：阿里云短信、云片网络、容联·云通讯、赛邮·云通讯、Luosimao、腾讯云短信
     |
     | 消息返回：JSON格式消息
     |
@@ -58,6 +58,15 @@ return [
             'apiKey' => env('LUOSIMAO_APIKEY'),
             'templateContent' => env('LUOSIMAO_TEMPLATECONTENT'),
             'executableFile' => 'LuoSiMaoAgent',
+        ],
+
+        'qqYun' => [
+            'credentials' => [
+                'appId' => env('QQYUN_APPID'),
+                'appKey' => env('QQYUN_APPKEY')
+            ],
+            'templateId' => env('QQYUN_TEMPLATEID'),
+            'executableFile' => 'QQYunAgent',
         ],
 
     ],

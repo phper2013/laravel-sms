@@ -99,16 +99,16 @@ abstract class Sms
                 if ($hasKey) {
                     if ($value == 'verifyCode') {
                         $this->verifyCode = $this->makeRandom();
-                        $this->templateVar[$key] = "$this->verifyCode";
+                        $this->templateVar[$key] = "{$this->verifyCode}";
                     } else {
-                        $this->templateVar[$key] = "$value";
+                        $this->templateVar[$key] = "{$value}";
                     }
                 } else {
                     if ($value == 'verifyCode') {
                         $this->verifyCode = $this->makeRandom();
-                        $this->templateVar[] = "'" . $this->verifyCode . "'";
+                        $this->templateVar[] = "{$this->verifyCode}";
                     } else {
-                        $this->templateVar[] = "'" . $value . "'";
+                        $this->templateVar[] = "{$value}";
                     }
                 }
             }
