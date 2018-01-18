@@ -1,7 +1,10 @@
 <?php
 namespace Laravelsms\Sms;
 
-class PhpSmsUnitTest extends \TestCase
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class PhpSmsUnitTest extends TestCase
 {
     private $mobile = '测试手机号码';
 

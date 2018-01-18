@@ -8,3 +8,7 @@
    
    - Add cloud.tencent.com sms api
    - other optimized
+   
+## ## 1.0 (2018-1-14)
+   
+   - Add phpunit for laravel5.5
